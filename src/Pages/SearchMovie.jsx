@@ -18,7 +18,7 @@ const SearchMovies = () => {
         const response = await axios.get(
           `${
             import.meta.env.VITE_API_URL
-          }/api/v1/search/movie?page${page}&query=${query}`,
+          }/api/v1/search/movie?page=${page}&query=${query}`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,

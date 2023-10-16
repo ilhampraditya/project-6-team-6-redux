@@ -31,7 +31,6 @@ function DetailMovie() {
   }, [movieId]);
   return (
     <div className="relative w-full min-h-screen">
-      {console.log(detailMovie)}
       <div
         style={{
           backgroundImage: `url('${IMAGE_PATH}${detailMovie?.backdrop_path}')`,
@@ -51,7 +50,7 @@ function DetailMovie() {
             className="rounded-lg pt-36 sm:pt-0  sm:ml-10 md:mt-40 hidden md:inline-flex"
           />
           <div className="flex flex-col p-5 pt-32 md:pt-44 max-w-6xl min-w-min md:mb-0">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-1">
               {detailMovie?.title}
             </h2>
             <p className="text-white font-semibold mb-3">{`Release: ${detailMovie?.release_date}`}</p>
