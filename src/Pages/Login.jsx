@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import GoogleLogin from "../Component/GoogleLogin";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -87,13 +88,7 @@ const Login = () => {
             <div className="text-center">
               <p className="my-5 text-gray-700">or Sign Up Using</p>
               <div className="flex justify-center">
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-gray-700 "
-                >
-                  <img src="/google.svg" width={32} />
-                  Google
-                </button>
+                <GoogleLogin buttonText={"Google"} />
               </div>
             </div>
           </form>
