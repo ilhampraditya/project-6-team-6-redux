@@ -97,7 +97,7 @@ function Header() {
           {user ? (
             <>
               <a
-                href="#"
+                href="/myprofile"
                 className="px-3 py-1 md:px-6 md:py-2 bg-transparent hover:decoration-red-600 text-red-600 rounded-full font-bold hover:text-white transition-all duration-300"
               >
                 Hi {user?.name}

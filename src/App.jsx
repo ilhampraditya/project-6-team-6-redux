@@ -9,39 +9,50 @@ import TrailerMovie from "./Pages/TrailerMovie";
 import NoAccessToken from "./Component/NoAccessToken";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import MyProfile from "./Pages/MyProfile";
+
 
 function App() {
   return (
     <div className="dark:bg-slate-800">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/details/:movieId" element={<DetailsMovie />} />
-          <Route path="/popular-movies" element={<PopularMovies />} />
-          <Route path="/search" element={<SearchMovies />} />
-          <Route path="/trailer/:movieId" element={<TrailerMovie />} />
+      <GoogleOAuthProvider
+        clientId={import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID}
+      >
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/details/:movieId" element={<DetailsMovie />} />
+            <Route path="/popular-movies" element={<PopularMovies />} />
+            <Route path="/search" element={<SearchMovies />} />
+            <Route path="/trailer/:movieId" element={<TrailerMovie />} />
+            <Route path="/myprofile" element={<MyProfile />} />
 
-          {/* Authentication */}
-          <Route
-            path="/login"
-            element={
-              <NoAccessToken>
-                <Login />
-              </NoAccessToken>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <NoAccessToken>
-                <Register />
-              </NoAccessToken>
-            }
-          />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+            
+            
+            
+            {/* Authentication */}
+            <Route
+              path="/login"
+              element={
+                <NoAccessToken>
+                  <Login />
+                </NoAccessToken>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <NoAccessToken>
+                  <Register />
+                </NoAccessToken>
+              }
+            />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </div>
   );
 }
