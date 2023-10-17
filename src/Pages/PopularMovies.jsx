@@ -31,7 +31,7 @@ function PopularMovies() {
   }, []);
   return (
     <div className="max-w-screen-2xl mx-auto mb-10 pt-16 md:pt-0">
-      <h1 className="text-center font-semibold text-4xl pt-24 mb-5">
+      <h1 className="text-center text-red-600 font-semibold text-4xl pt-24 mb-5">
         Popular Movie
       </h1>
       <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
