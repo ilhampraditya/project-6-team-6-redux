@@ -8,6 +8,7 @@ import SearchMovies from "./Pages/SearchMovie";
 import TrailerMovie from "./Pages/TrailerMovie";
 import NoAccessToken from "./Component/NoAccessToken";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
             element={
               <NoAccessToken>
                 <Login />
+              </NoAccessToken>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <NoAccessToken>
+                <Register />
               </NoAccessToken>
             }
           />
