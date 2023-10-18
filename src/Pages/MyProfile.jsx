@@ -23,7 +23,6 @@ const MyProfile = () => {
 
         const { data } = response.data;
 
-
         setUser(data);
       } catch (error) {
         console.error(error);
@@ -35,14 +34,11 @@ const MyProfile = () => {
 
   return (
     <section className="flex justify-center items-center py-8 min-h-screen w-full">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form className="bg-slate-100 shadow-md rounded text-lg px-8 pt-6 pb-8 mb-4">
         {user && (
           <div>
-      
             <p>Name: {user.name}</p>
             <p>Email: {user.email}</p>
-           
-           
           </div>
         )}
       </form>
