@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <section className="flex justify-center items-center bg-[url('/login_page.jpg')] bg-cover py-8 min-h-screen w-full">
+    <section className="flex justify-center items-center bg-[url('/background.jpg')] bg-cover py-8 min-h-screen w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 bg-slate-100 rounded-md gap-10 px-10 py-14">
         <div className="flex flex-col text-center justify-center">
           <h1 className="text-4xl font-bold my-2 text-slate-600">
