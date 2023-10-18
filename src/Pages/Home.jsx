@@ -5,31 +5,59 @@ import Hero from "../Component/Hero";
 
 function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
+  const [errors, setErrors] = useState({
+    isError: false,
+    message: null,
+  });
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_CARD;
 
   useEffect(() => {
     const getPopularMovies = async () => {
       try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/v1/movie/popular`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
         const { data } = response.data;
 
         setPopularMovies(data.slice(0, 8));
+        setErrors({ ...errors, isError: false });
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          alert(error?.response?.data?.status_message);
+          setErrors({
+            ...errors,
+            isError: true,
+            message: error?.response?.data?.message || error?.message,
+          });
+          return;
         }
         alert(error?.message);
+        setErrors({
+          ...errors,
+          isError: true,
+          message: error?.message,
+        });
       }
     };
+
     getPopularMovies();
   }, []);
+
+  if (errors.isError) {
+    return <h1>{errors.message}</h1>;
+  }
+
+  if (popularMovies.length === 0) {
+    return <h1>Loading ....</h1>;
+  }
+
   return (
     <>
       <Hero />

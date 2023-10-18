@@ -11,7 +11,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import MyProfile from "./Pages/MyProfile";
-
+import Protected from "./Component/Protected";
 
 function App() {
   return (
@@ -22,16 +22,55 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/details/:movieId" element={<DetailsMovie />} />
-            <Route path="/popular-movies" element={<PopularMovies />} />
-            <Route path="/search" element={<SearchMovies />} />
-            <Route path="/trailer/:movieId" element={<TrailerMovie />} />
-            <Route path="/myprofile" element={<MyProfile />} />
+            <Route
+              path="/"
+              element={
+                <Protected>
+                  <Home />
+                </Protected>
+              }
+            />
+            <Route
+              path="/details/:movieId"
+              element={
+                <Protected>
+                  <DetailsMovie />
+                </Protected>
+              }
+            />
+            <Route
+              path="/popular-movies"
+              element={
+                <Protected>
+                  <PopularMovies />
+                </Protected>
+              }
+            />
+            <Route
+              path="/search"
+              element={
+                <Protected>
+                  <SearchMovies />
+                </Protected>
+              }
+            />
+            <Route
+              path="/trailer/:movieId"
+              element={
+                <Protected>
+                  <TrailerMovie />
+                </Protected>
+              }
+            />
+            <Route
+              path="/myprofile"
+              element={
+                <Protected>
+                  <MyProfile />
+                </Protected>
+              }
+            />
 
-            
-            
-            
             {/* Authentication */}
             <Route
               path="/login"
