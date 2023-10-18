@@ -14,6 +14,9 @@ const SearchMovies = () => {
   useEffect(() => {
     const getSearchMovie = async () => {
       try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
         // Get the data from API with query and page variable
         const response = await axios.get(
           `${
@@ -21,7 +24,7 @@ const SearchMovies = () => {
           }/api/v1/search/movie?page=${page}&query=${query}`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -29,7 +32,15 @@ const SearchMovies = () => {
         const { data } = response.data;
         setSearchMovie(data);
       } catch (error) {
-        console.error(error);
+        if (axios.isAxiosError(error)) {
+          if (error.response.status === 401) {
+            localStorage.removeItem("token");
+            return;
+          }
+          alert(error?.response?.data?.message);
+          return;
+        }
+        alert(error?.message);
       }
     };
     getSearchMovie();
