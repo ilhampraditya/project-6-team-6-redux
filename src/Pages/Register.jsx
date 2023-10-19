@@ -7,12 +7,18 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const name = `${firstName} ${lastName}`;
+
   const regis = async (event) => {
     // Prevent default is to prevent the default behavior
     event.preventDefault();
 
     try {
+      if (password !== confirmPassword) {
+        return alert("Passwords must be the same!");
+      }
+
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/auth/register`,
         {
@@ -91,7 +97,7 @@ const Register = () => {
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
-            <div className="mb-6">
+            <div className="mb-1">
               <input
                 className="shadow focus:border-red-400 appearance-none border border-slate-400 rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 type="password"
@@ -99,9 +105,15 @@ const Register = () => {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
-              <p className="text-red-500 text-xs italic">
-                Please enter your password.
-              </p>
+            </div>
+            <div className="mb-6">
+              <input
+                className="shadow focus:border-red-400 appearance-none border border-slate-400 rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+              />
             </div>
             <div className="text-center">
               <button

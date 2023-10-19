@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* style logo Movielist */
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("./assets/font/BebasNeue.otf") format("opentype");
+}
+
+.navbar {
+  font-family: "Bebas Neue", sans-serif;
+  color: red;
+  font-weight: 700;
+  font-size: 3rem;
+  padding-top: 0.8rem;
+}
