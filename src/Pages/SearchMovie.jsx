@@ -10,6 +10,7 @@ const SearchMovies = () => {
   const query = searchParams.get("query");
   const page = searchParams.get("page");
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_CARD;
+  const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
 
   useEffect(() => {
     const getSearchMovie = async () => {
@@ -57,7 +58,11 @@ const SearchMovies = () => {
           <div key={movie?.id}>
             <MovieItem
               id={movie?.id}
-              imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
+              imgURL={
+                movie?.poster_path
+                  ? `${IMAGE_PATH}${movie.poster_path}`
+                  : `${NO_IMAGE_PATH}`
+              }
               title={movie?.title}
               vote_average={`${movie?.vote_average} / 10`}
               release_date={movie?.release_date}

@@ -7,6 +7,7 @@ const TrailerMovie = () => {
   const [trailerMovie, setTrailerMovie] = useState([]);
   const [backgruondMovie, setbackgruondMovie] = useState([]);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
+  const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
 
   //Fungsi untuk mengambil API  Video Trailer
   useEffect(() => {
@@ -46,7 +47,11 @@ const TrailerMovie = () => {
     <div className="relative w-full min-h-screen">
       <img
         className="w-full h-screen bg-cover bg-no-repeat bg-center blur-sm"
-        src={`${IMAGE_PATH}${backgruondMovie?.backdrop_path}`}
+        src={
+          backgruondMovie?.backdrop_path
+            ? `${IMAGE_PATH}${backgruondMovie?.backdrop_path}`
+            : NO_IMAGE_PATH
+        }
       />
       <iframe
         title="Movie Trailer"
