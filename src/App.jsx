@@ -12,7 +12,7 @@ import Register from "./Pages/Register";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import MyProfile from "./Pages/MyProfile";
 import Protected from "./Component/Protected";
-import Id from "./Pages/id";
+import Id from "./Pages/Id";
 
 function App() {
   return (
