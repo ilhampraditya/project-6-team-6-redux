@@ -6,6 +6,7 @@ function DetailMovie() {
   const { movieId } = useParams();
   const [detailMovie, setDetailMovie] = useState([]);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
+  const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
 
   useEffect(() => {
     const getDetailMovie = async () => {
@@ -51,7 +52,11 @@ function DetailMovie() {
       <div className="absolute top-0 flex items-center justify-start xl:pl-20">
         <div className="flex flex-col items-center sm:flex-row pt-24 md:pt-10 md:gap-10">
           <img
-            src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
+            src={
+              detailMovie?.poster_path
+                ? `${IMAGE_PATH}${detailMovie.poster_path}`
+                : `${NO_IMAGE_PATH}`
+            }
             alt="Image.jpg"
             width="250px"
             height="250px"
