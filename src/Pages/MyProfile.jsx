@@ -33,17 +33,18 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <section className="flex justify-start min-h-screen w-full bg-slate-800">
+    <section className="flex justify-center min-h-screen w-full bg-slate-800">
       <div className="pt-40 m-5 md:pt-20 md:m-10">
         {user && (
-          <div>
-            <p className="font-semibold mb-6 text-slate-300 italic md:text-lg xl:text-xl">
+          <div className="flex flex-col justify-center items-center bg-slate-200 rounded-md p-10">
+            <img src="/user.png" width={200} />
+            <p className="font-semibold mb-2 mt-7  italic md:text-lg xl:text-xl">
               Hello, Selamat Datang ..
             </p>
-            <p className="text-4xl md:text-5xl xl:text-7xl font-bold text-slate-50">
+            <p className="text-4xl md:text-5xl xl:text-7xl font-bold ">
               {user.name}
             </p>
-            <p className="text-sm md:text-lg xl:text-xl font-semibold text-slate-50 mt-2">
+            <p className="text-sm md:text-lg xl:text-xl font-semibold mt-2">
               {user.email}
             </p>
             <div className="bg-slate-50 shadow-md rounded-md mt-10 p-4 max-w-4xl">
