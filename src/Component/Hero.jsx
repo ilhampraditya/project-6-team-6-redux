@@ -21,7 +21,7 @@ function Hero() {
           }
         );
         const { data } = response.data;
-        setTrandingMovie(data.slice(0, 3));
+        setTrandingMovie(data.slice(1, 4));
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (error.response.status === 401) {

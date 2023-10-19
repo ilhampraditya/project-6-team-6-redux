@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-oauth/google": "^0.11.1",
     "axios": "^1.5.1",
+    "owl.carousel": "^2.3.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.0",

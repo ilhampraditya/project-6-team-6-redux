@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "../index.css";
 
 function Header() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ function Header() {
   return (
     <header className="p-4 fixed w-full z-50">
       <nav className="container flex flex-col justify-between items-center md:flex-row">
-        <a href="/" className="text-4xl font-bold text-red-600 mb-2">
+        <a href="/" className="text-4xl font-bold text-red-600 mb-2 navbar">
           Movielist
         </a>
         <div className="w-full relative mb-3 md:w-1/2 md:mb-0">
