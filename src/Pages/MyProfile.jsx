@@ -33,15 +33,40 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <section className="flex justify-center items-center py-8 min-h-screen w-full">
-      <form className="bg-slate-100 shadow-md rounded text-lg px-8 pt-6 pb-8 mb-4">
+    <section className="flex justify-start min-h-screen w-full bg-slate-800">
+      <div className="pt-40 m-5 md:pt-20 md:m-10">
         {user && (
           <div>
-            <p>Name: {user.name}</p>
-            <p>Email: {user.email}</p>
+            <p className="font-semibold mb-6 text-slate-300 italic md:text-lg xl:text-xl">
+              Hello, Selamat Datang ..
+            </p>
+            <p className="text-4xl md:text-5xl xl:text-7xl font-bold text-slate-50">
+              {user.name}
+            </p>
+            <p className="text-sm md:text-lg xl:text-xl font-semibold text-slate-50 mt-2">
+              {user.email}
+            </p>
+            <div className="bg-slate-50 shadow-md rounded-md mt-10 p-4 max-w-4xl">
+              <h5 className="text-center font-bold mb-4 md:text-xl">Biodata</h5>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
+                odio perspiciatis quibusdam, sunt nulla alias placeat expedita
+                fugit eum eius mollitia aspernatur ipsum ipsa voluptatem
+                doloremque quam voluptatibus ex eveniet nobis culpa commodi
+                accusamus fuga repudiandae eligendi. Dicta iusto earum hic minus
+                nihil nesciunt. Neque, quo. Doloremque aut unde quisquam rerum
+                suscipit exercitationem illum quibusdam ad, quaerat, hic
+                repudiandae deserunt commodi quam? Magnam, mollitia perferendis
+                quasi a laudantium totam repellendus. Ullam dolore error
+                molestiae deleniti? Placeat soluta velit, blanditiis praesentium
+                culpa ratione consequatur magnam maiores facilis accusamus qui
+                vel dolorem iste reiciendis quas libero in? Repellendus debitis
+                saepe magni mollitia.
+              </p>
+            </div>
           </div>
         )}
-      </form>
+      </div>
     </section>
   );
 };

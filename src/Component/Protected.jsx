@@ -10,7 +10,7 @@ function Protected({ children }) {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          return navigate("/login");
+          return navigate("/id");
         }
 
         await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/auth/me`, {
@@ -23,7 +23,7 @@ function Protected({ children }) {
           // If token is not valid
           if (error.response.status === 401) {
             localStorage.removeItem("token");
-            return navigate("/login");
+            return navigate("/id");
           }
 
           alert(error?.response?.data?.message);
