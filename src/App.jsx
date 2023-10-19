@@ -12,6 +12,7 @@ import Register from "./Pages/Register";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import MyProfile from "./Pages/MyProfile";
 import Protected from "./Component/Protected";
+import Id from "./Pages/id";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
+            <Route path="/id" element={<Id />} />
             <Route
               path="/"
               element={

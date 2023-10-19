@@ -100,7 +100,7 @@ function Header() {
                 href="/myprofile"
                 className="px-3 py-1 md:px-6 md:py-2 bg-transparent hover:decoration-red-600 text-red-600 rounded-full font-bold hover:text-white transition-all duration-300"
               >
-                Hi! {user?.name}
+                {user?.name}
               </a>
               <button
                 type="button"
@@ -111,20 +111,7 @@ function Header() {
               </button>
             </>
           ) : (
-            <>
-              <a
-                href="/login"
-                className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-red-600 text-red-600 rounded-full font-bold hover:bg-red-600 hover:text-white transition-all duration-300"
-              >
-                Login
-              </a>
-              <a
-                href="/register"
-                className="px-3 py-1 md:px-6 md:py-2 bg-red-600 border-2 border-red-600 hover:bg-red-700 text-white rounded-full font-bold  transition-all duration-300"
-              >
-                Register
-              </a>
-            </>
+            <></>
           )}
         </div>
       </nav>
