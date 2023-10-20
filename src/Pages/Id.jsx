@@ -1,6 +1,6 @@
 function Id() {
   return (
-    <section className="flex justify-center items-center bg-[url('/background-2.jpg')] bg-cover py-8 min-h-screen w-full contrast-150">
+    <section className="flex justify-center items-center bg-[url('/background.jpg')] bg-cover py-8 min-h-screen w-full contrast-150">
       <div className="max-w-3xl md:max-w-5xl">
         <div className="m-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white font-bold text-center">
