@@ -63,7 +63,7 @@ function Home() {
       <Hero />
       <main>
         <div className="max-w-screen-2xl mx-auto mb-8 ">
-          <div>
+          <div className="container">
             <div className="flex justify-between my-8 mx-4">
               <h1 className="font-bold text-red-600 text-2xl">Popular Movie</h1>
               <a

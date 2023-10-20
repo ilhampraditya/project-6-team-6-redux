@@ -33,15 +33,15 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <section className="flex justify-center min-h-screen w-full bg-slate-800">
+    <section className="flex justify-center items-center min-h-screen w-full bg-slate-800">
       <div className="pt-40 m-5 md:pt-20 md:m-10">
         {user && (
           <div className="flex flex-col justify-center items-center bg-slate-200 rounded-md p-10">
-            <img src="/user.png" width={200} />
-            <p className="font-semibold mb-2 mt-7  italic md:text-lg xl:text-xl">
+            <img className="w-44" src="/user.png" />
+            <p className="font-semibold mb-2 mt-7 italic md:text-lg xl:text-xl">
               Hello, Selamat Datang ..
             </p>
-            <p className="text-4xl md:text-5xl xl:text-7xl font-bold ">
+            <p className="text-4xl md:text-5xl 2xl:text-6xl font-bold ">
               {user.name}
             </p>
             <p className="text-sm md:text-lg xl:text-xl font-semibold mt-2">
@@ -55,14 +55,9 @@ const MyProfile = () => {
                 fugit eum eius mollitia aspernatur ipsum ipsa voluptatem
                 doloremque quam voluptatibus ex eveniet nobis culpa commodi
                 accusamus fuga repudiandae eligendi. Dicta iusto earum hic minus
-                nihil nesciunt. Neque, quo. Doloremque aut unde quisquam rerum
-                suscipit exercitationem illum quibusdam ad, quaerat, hic
-                repudiandae deserunt commodi quam? Magnam, mollitia perferendis
-                quasi a laudantium totam repellendus. Ullam dolore error
-                molestiae deleniti? Placeat soluta velit, blanditiis praesentium
-                culpa ratione consequatur magnam maiores facilis accusamus qui
-                vel dolorem iste reiciendis quas libero in? Repellendus debitis
-                saepe magni mollitia.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Adipisci tenetur molestiae magni, quia reprehenderit molestias
+                consequuntur placeat deserunt ullam alias.
               </p>
             </div>
           </div>

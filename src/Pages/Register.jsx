@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <section className="flex justify-center items-center bg-[url('/background-2.jpg')] bg-cover py-8 min-h-screen w-full contrast-125">
+    <section className="flex justify-center items-center bg-[url('/background.jpg')] bg-cover py-8 min-h-screen w-full contrast-125">
       <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 rounded-md gap-10 px-10 py-14">
         <div className="flex flex-col text-center justify-center">
           <h1 className="text-4xl font-bold my-2 text-white">

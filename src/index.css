@@ -8,7 +8,7 @@
   src: url("./assets/font/BebasNeue.otf") format("opentype");
 }
 
-.navbar {
+.navbar-logo {
   font-family: "Bebas Neue", sans-serif;
   color: red;
   font-weight: 700;
