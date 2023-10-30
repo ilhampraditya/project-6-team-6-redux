@@ -73,9 +73,6 @@ const Login = () => {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
-              <p className="text-red-500 text-xs italic">
-                Please enter your password.
-              </p>
             </div>
             <div className="text-center">
               <button

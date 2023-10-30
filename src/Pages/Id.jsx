@@ -4,7 +4,7 @@ function Id() {
       <div className="max-w-3xl md:max-w-5xl">
         <div className="m-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white font-bold text-center">
-            Welcome to the Tim6 Movie website, where this website can help you
+            Welcome to the Team6 Movie website, where this website can help you
             find popular films
           </h1>
           <p className="text-white text-xl md:text-2xl text-center font-semibold mt-8 mb-7">

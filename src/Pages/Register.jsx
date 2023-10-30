@@ -1,8 +1,13 @@
 import { useState } from "react";
-import axios from "axios";
 import GoogleLogin from "../Components/GoogleLogin";
+import { useNavigate } from "react-router-dom/dist";
+import { useDispatch } from "react-redux";
+import { register } from "../redux/actions/authActions";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -10,42 +15,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const name = `${firstName} ${lastName}`;
 
-  const regis = async (event) => {
+  const onRegis = async (event) => {
     // Prevent default is to prevent the default behavior
     event.preventDefault();
 
-    try {
-      if (password !== confirmPassword) {
-        return alert("Passwords must be the same!");
-      }
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/auth/register`,
-        {
-          email,
-          name,
-          password,
-        }
-      );
-      const { data } = response.data;
-      const { token } = data;
-
-      // Save our token
-      localStorage.setItem("token", token);
-
-      // Redirect to home
-
-      // Redirect to home or reload the home
-      // This is temporary solution, the better solution is using redux
-      window.location.replace("/");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        alert(error?.response?.data?.message);
-        return;
-      }
-
-      alert(error?.message);
-    }
+    dispatch(register(email, name, password, confirmPassword, navigate));
   };
 
   return (
@@ -64,7 +38,7 @@ const Register = () => {
         </div>
         <div>
           <form
-            onSubmit={regis}
+            onSubmit={onRegis}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
             <div className="mb-4">
