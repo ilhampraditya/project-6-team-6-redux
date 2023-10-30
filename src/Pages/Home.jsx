@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MovieItem from "../Component/MovieItem";
-import Hero from "../Component/Hero";
+import MovieItem from "../Components/MovieItem";
+import Hero from "../Components/Hero";
 
 function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -48,7 +48,7 @@ function Home() {
     };
 
     getPopularMovies();
-  }, []);
+  }, [errors]);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;

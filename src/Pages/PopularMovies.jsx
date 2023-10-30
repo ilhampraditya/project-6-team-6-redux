@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MovieItem from "../Component/MovieItem";
+import MovieItem from "../Components/MovieItem";
 
 function PopularMovies() {
   const [popularMovies, setPopularMovies] = useState([]);

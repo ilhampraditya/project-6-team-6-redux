@@ -34,7 +34,7 @@ function Protected({ children }) {
       }
     };
     getMe();
-  }, []);
+  }, [navigate]);
   return children;
 }
 

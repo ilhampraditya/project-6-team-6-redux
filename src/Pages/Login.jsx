@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import GoogleLogin from "../Component/GoogleLogin";
+import GoogleLogin from "../Components/GoogleLogin";
 
 const Login = () => {
   const [email, setEmail] = useState("");

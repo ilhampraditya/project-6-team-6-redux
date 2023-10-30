@@ -25,7 +25,11 @@ const MyProfile = () => {
 
         setUser(data);
       } catch (error) {
-        console.error(error);
+        if (axios.isAxiosError(error)) {
+          alert(error?.response?.data?.message);
+          return;
+        }
+        alert(error?.message);
       }
     };
 

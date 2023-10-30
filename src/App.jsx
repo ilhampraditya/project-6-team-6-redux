@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Header from "./Component/Header";
+import Header from "./Components/Header";
 import DetailsMovie from "./Pages/DetailMovie";
-import Footer from "./Component/Footer";
+import Footer from "./Components/Footer";
 import PopularMovies from "./Pages/PopularMovies";
 import SearchMovies from "./Pages/SearchMovie";
 import TrailerMovie from "./Pages/TrailerMovie";
-import NoAccessToken from "./Component/NoAccessToken";
+import NoAccessToken from "./Components/NoAccessToken";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import MyProfile from "./Pages/MyProfile";
-import Protected from "./Component/Protected";
+import Protected from "./Components/Protected";
 import Id from "./Pages/Id";
 
 function App() {

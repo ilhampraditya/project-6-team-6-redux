@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import MovieItem from "../Component/MovieItem";
+import MovieItem from "../Components/MovieItem";
 
 const SearchMovies = () => {
   // Create state for movies that have been searched

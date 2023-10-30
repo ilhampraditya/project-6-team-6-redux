@@ -35,7 +35,7 @@ const NoAccessToken = ({ children }) => {
       }
     };
     getMe();
-  }, []);
+  }, [navigate]);
   return children;
 };
 
