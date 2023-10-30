@@ -1,37 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
 import GoogleLogin from "../Components/GoogleLogin";
+import { useNavigate } from "react-router-dom";
+import { login } from "../redux/actions/authActions";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = async (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
-        {
-          email,
-          password,
-        }
-      );
-      const { data } = response.data;
-      const { token } = data;
-
-      // Save our token
-      localStorage.setItem("token", token);
-
-      //* Redirect to home or reload the home
-      window.location.replace("/");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        alert(error?.response?.data?.message);
-        return;
-      }
-      alert(error?.message);
-    }
+    dispatch(login(email, password, navigate));
   };
 
   return (
@@ -50,7 +33,7 @@ const Login = () => {
         </div>
         <div>
           <form
-            onSubmit={login}
+            onSubmit={onSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
             <div className="mb-4">

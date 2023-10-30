@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import "../index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe, logout } from "../redux/actions/authActions";
 
 function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, token } = useSelector((state) => state.auth);
+
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -19,55 +25,19 @@ function Header() {
     navigate(searchUrl);
   };
 
-  //*Dropdown Navbar
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  //* Get Username in Navbar and protected Navbar Button
-  const [user, setUser] = useState(null);
-
-  const logout = (event) => {
-    event.preventDefault();
-
-    localStorage.removeItem("token");
+  const onLogout = () => {
+    dispatch(logout());
 
     //* Redirect to home or reload the home
-    window.location.replace("/");
+    navigate("/login");
   };
 
+  // Login with redux
   useEffect(() => {
-    const getMe = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const { data } = response.data;
-
-        // Set the user state from API data
-        setUser(data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          // If token is not valid
-          if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            return;
-          }
-          alert(error?.response?.data?.message);
-          return;
-        }
-        alert(error?.message);
-      }
-    };
-
-    getMe();
-  }, []);
+    if (token) {
+      dispatch(getMe(navigate, null, "/login"));
+    }
+  }, [dispatch, navigate, token]);
 
   return (
     <header className="p-4 fixed w-full z-50">
@@ -124,7 +94,7 @@ function Header() {
                     <button
                       type="button"
                       className="px-3 py-1 w-full md:px-6 md:py-2 bg-red-700 hover:bg-red-900 border-2 border-red-600 text-white rounded font-bold transition-all duration-300"
-                      onClick={logout}
+                      onClick={onLogout}
                     >
                       Logout
                     </button>

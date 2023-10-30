@@ -1,40 +1,17 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { getMe } from "../redux/actions/authActions";
 
 const MyProfile = () => {
-  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const getProfileData = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          return;
-        }
-
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const { data } = response.data;
-
-        setUser(data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          alert(error?.response?.data?.message);
-          return;
-        }
-        alert(error?.message);
-      }
-    };
-
-    getProfileData();
-  }, []);
+    dispatch(getMe(navigate, null, null));
+  }, [dispatch, navigate]);
 
   return (
     <section className="flex justify-center items-center min-h-screen w-full bg-slate-800">
