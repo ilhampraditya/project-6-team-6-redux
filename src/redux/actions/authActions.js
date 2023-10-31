@@ -84,7 +84,6 @@ export const getMe =
         }
       );
       const { data } = response.data;
-
       // Set the user state from API data
       dispatch(setUser(data));
 

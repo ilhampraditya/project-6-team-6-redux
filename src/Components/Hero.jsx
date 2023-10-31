@@ -1,51 +1,27 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrandingMovie } from "../redux/actions/movieActions";
 
 function Hero() {
-  const [trandingMovie, setTrandingMovie] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const dispatch = useDispatch();
+  const { tranding } = useSelector((state) => state.movie);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
-  useEffect(() => {
-    const getTrendingMovie = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
 
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/movie/popular`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const { data } = response.data;
-        setTrandingMovie(data.slice(1, 4));
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            return;
-          }
-          alert(error?.response?.data?.message);
-          return;
-        }
-        alert(error?.message);
-      }
-    };
-    getTrendingMovie();
-  }, []);
+  useEffect(() => {
+    dispatch(getTrandingMovie());
+  }, [dispatch]);
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? trandingMovie.length - 1 : prevSlide - 1
+      prevSlide === 0 ? tranding.length - 1 : prevSlide - 1
     );
   };
 
   const handleNextSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === trandingMovie.length - 1 ? 0 : prevSlide + 1
+      prevSlide === tranding.length - 1 ? 0 : prevSlide + 1
     );
   };
 
@@ -63,7 +39,7 @@ function Hero() {
 
   return (
     <div>
-      {trandingMovie.map((movie, index) => (
+      {tranding.map((movie, index) => (
         <div
           key={movie?.id}
           style={{

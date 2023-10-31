@@ -1,48 +1,23 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailMovie } from "../redux/actions/movieActions";
 
 function DetailMovie() {
   const { movieId } = useParams();
-  const [detailMovie, setDetailMovie] = useState([]);
+  const dispatch = useDispatch();
+  const { detail } = useSelector((state) => state.movie);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
   const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
 
   useEffect(() => {
-    const getDetailMovie = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/movie/${movieId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const { data } = response.data;
-        setDetailMovie(data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            return;
-          }
-          alert(error?.response?.data?.message);
-          return;
-        }
-        alert(error?.message);
-      }
-    };
-    getDetailMovie();
-  }, [movieId]);
+    dispatch(getDetailMovie(movieId));
+  }, [dispatch, movieId]);
   return (
     <div className="relative w-full min-h-screen">
       <div
         style={{
-          backgroundImage: `url('${IMAGE_PATH}${detailMovie?.backdrop_path}')`,
+          backgroundImage: `url('${IMAGE_PATH}${detail?.backdrop_path}')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -53,8 +28,8 @@ function DetailMovie() {
         <div className="flex flex-col items-center sm:flex-row pt-24 md:pt-10 md:gap-10">
           <img
             src={
-              detailMovie?.poster_path
-                ? `${IMAGE_PATH}${detailMovie.poster_path}`
+              detail?.poster_path
+                ? `${IMAGE_PATH}${detail.poster_path}`
                 : `${NO_IMAGE_PATH}`
             }
             alt="Image.jpg"
@@ -64,19 +39,19 @@ function DetailMovie() {
           />
           <div className="flex flex-col p-5 pt-32 md:pt-44 max-w-6xl min-w-min md:mb-0">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-1">
-              {detailMovie?.title}
+              {detail?.title}
             </h2>
-            <p className="text-white font-semibold mb-3">{`Release: ${detailMovie?.release_date}`}</p>
+            <p className="text-white font-semibold mb-3">{`Release: ${detail?.release_date}`}</p>
             <p className="text-yellow-400 font-bold">
-              {`${detailMovie?.vote_average?.toFixed(1)} / 10`}
+              {`${detail?.vote_average?.toFixed(1)} / 10`}
             </p>
-            {detailMovie?.tagline ? (
-              <p className=" text-white font-semibold mb-3">{`Tagline: "${detailMovie?.tagline}"`}</p>
+            {detail?.tagline ? (
+              <p className=" text-white font-semibold mb-3">{`Tagline: "${detail?.tagline}"`}</p>
             ) : (
               <p className=" text-white font-semibold">{`Tagline: "Tagline Not Found"`}</p>
             )}
             <div className="flex justify-start items-center gap-3 mb-3">
-              {detailMovie?.genres?.map((genre) => (
+              {detail?.genres?.map((genre) => (
                 <div key={genre?.id}>
                   <p className="rounded-lg italic font-semibold text-white py-0.2 px-3 bg-red-600">
                     {genre?.name}
@@ -84,11 +59,9 @@ function DetailMovie() {
                 </div>
               ))}
             </div>
-            <p className="text-white font-semibold mb-5">
-              {detailMovie?.overview}
-            </p>
+            <p className="text-white font-semibold mb-5">{detail?.overview}</p>
             <Link
-              to={`/trailer/${detailMovie?.id}`}
+              to={`/trailer/${detail?.id}`}
               className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
             >
               <img src="/play.svg" alt="play.svg" width="20px" height="20px" />
