@@ -4,6 +4,9 @@ const initialState = {
   tranding: [],
   detail: [],
   popular: [],
+  search: [],
+  popularMovie: [],
+  trailer: [],
 };
 
 const movieSlice = createSlice({
@@ -19,10 +22,19 @@ const movieSlice = createSlice({
     setPopular: (state, action) => {
       state.popular = action.payload;
     },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    setPopularMovie: (state, action) => {
+      state.popularMovie = action.payload;
+    },
+    setTrailer: (state, action) => {
+      state.trailer = action.payload;
+    },
   },
 });
 
-export const { setTrandingMovie, setDetailMovie, setPopular } =
+export const { setTrandingMovie, setDetailMovie, setPopular, setSearch, setPopularMovie, setTrailer } =
   movieSlice.actions;
 
 export default movieSlice.reducer;
