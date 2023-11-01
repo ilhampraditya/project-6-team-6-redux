@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrandingMovie } from "../redux/actions/movieActions";
+import { getPopular } from "../redux/actions/movieActions";
 
 function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
-  const { tranding } = useSelector((state) => state.movie);
+  const { popular } = useSelector((state) => state.movie);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
+  const [errors, setErrors] = useState({
+    isError: false,
+    message: null,
+  });
+  const [tranding, setTranding] = useState([]);
 
   useEffect(() => {
-    dispatch(getTrandingMovie());
+    dispatch(getPopular(setErrors, errors));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (popular.length > 0) {
+      setTranding(popular.slice(0, 4));
+    }
+  }, [popular]);
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) =>

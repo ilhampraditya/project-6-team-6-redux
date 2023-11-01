@@ -56,6 +56,7 @@ function Header() {
                   type="text"
                   name="search"
                   placeholder="What do you want to watch?"
+                  autoComplete="off"
                   className="outline-none font-semibold text-md bg-transparent border-none ring-2 ring-red-600 rounded-full border-red-600 w-[100%] px-4 py-1 md:py-2"
                 />
                 <div className="absolute top-0 right-0 transform translate-y-1 md:translate-y-2  -translate-x-3">

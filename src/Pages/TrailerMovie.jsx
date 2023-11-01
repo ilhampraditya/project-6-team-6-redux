@@ -9,8 +9,7 @@ const TrailerMovie = () => {
 
   const dispatch = useDispatch();
 
-  const { trailer,detail } = useSelector((state) => state.movie);
-  
+  const { trailer, detail } = useSelector((state) => state.movie);
 
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
   const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
@@ -22,7 +21,7 @@ const TrailerMovie = () => {
 
   useEffect(() => {
     dispatch(getTrailerMovies(setErrors, errors, movieId));
-    dispatch(getDetailMovie(movieId))
+    dispatch(getDetailMovie(movieId));
   }, [dispatch, errors, movieId]);
 
   if (errors.isError) {

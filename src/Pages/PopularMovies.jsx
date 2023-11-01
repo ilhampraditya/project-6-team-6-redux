@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieItem from "../Components/MovieItem";
-import { getPopularMovies } from "../redux/actions/movieActions";
+import { getPopular } from "../redux/actions/movieActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const PopularMovies = () => {
@@ -16,8 +16,8 @@ const PopularMovies = () => {
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_HEADER;
 
   useEffect(() => {
-    dispatch(getPopularMovies(setErrors, errors));
-  }, [dispatch, errors]);
+    dispatch(getPopular(setErrors, errors));
+  }, [dispatch]);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;

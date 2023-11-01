@@ -20,19 +20,13 @@ const SearchMovies = () => {
   const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
 
   useEffect(() => {
-    dispatch(getSearchMovie(query, page)).catch((error) => {
-      alert.error(error);
-      setErrors({
-        isError: true,
-        message: "Failed to fetch search results. Please try again later.",
-      });
-    });
+    dispatch(getSearchMovie(query, page, setErrors, errors));
   }, [dispatch, page, query]);
 
   // Foreach or map every object of movies array
   return (
     <div className="max-w-screen-2xl mx-auto mb-10">
-      <h1 className="font-semibold text-3xl pt-48 ml-6 md:text-4xl md:ml-10 md:pt-28 mb-5">
+      <h1 className="font-semibold text-3xl pt-48 ml-6 md:text-4xl md:ml-10 md:pt-28 mb-5 text-red-600">
         {`Search Result "${query}"`}
       </h1>
       {errors.isError ? (
@@ -51,7 +45,7 @@ const SearchMovies = () => {
                     : `${NO_IMAGE_PATH}`
                 }
                 title={movie?.title}
-                vote_average={`${movie?.vote_average} / 10`}
+                vote_average={`${movie?.vote_average?.toFixed(1)} / 10`}
                 release_date={movie?.release_date}
               />
             </div>

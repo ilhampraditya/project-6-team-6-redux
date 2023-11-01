@@ -7,6 +7,7 @@ import { getPopular } from "../redux/actions/movieActions";
 function Home() {
   const dispatch = useDispatch();
   const { popular } = useSelector((state) => state.movie);
+  const [popularLite, setPopularLite] = useState([]);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL_CARD;
   const [errors, setErrors] = useState({
     isError: false,
@@ -15,13 +16,19 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPopular(setErrors, errors));
-  }, [dispatch, errors]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (popular.length > 0) {
+      setPopularLite(popular.slice(0, 8));
+    }
+  }, [popular]);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;
   }
 
-  if (popular.length === 0) {
+  if (popularLite.length === 0) {
     return <h1>Loading ....</h1>;
   }
 
@@ -41,13 +48,13 @@ function Home() {
               </a>
             </div>
             <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
-              {popular.map((movie) => (
+              {popularLite.map((movie) => (
                 <div key={movie?.id}>
                   <MovieItem
                     id={movie?.id}
                     imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
                     title={movie?.title}
-                    vote_average={`${movie?.vote_average} / 10`}
+                    vote_average={`${movie?.vote_average?.toFixed(1)} / 10`}
                     release_date={movie?.release_date}
                   />
                 </div>
