@@ -25,7 +25,7 @@ function DetailMovie() {
         className="w-full min-h-screen blur-sm contrast-125"
       ></div>
       <div className="absolute top-0 flex items-center justify-start xl:pl-20">
-        <div className="flex flex-col items-center sm:flex-row pt-24 md:pt-10 md:gap-10">
+        <div className="flex flex-col items-center sm:flex-row pt-12 md:pt-2 md:gap-10">
           <img
             src={
               detail?.poster_path
@@ -35,10 +35,10 @@ function DetailMovie() {
             alt="Image.jpg"
             width="250px"
             height="250px"
-            className="rounded-lg pt-36 sm:pt-0  sm:ml-10 md:mt-40 hidden md:inline-flex"
+            className="rounded-lg pt-36 sm:pt-0 sm:ml-10 md:mt-32 hidden md:inline-flex"
           />
-          <div className="flex flex-col p-5 pt-32 md:pt-44 max-w-6xl min-w-min md:mb-0">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-1">
+          <div className="flex flex-col p-5 pt-32 md:pt-32 max-w-6xl min-w-min md:mb-0">
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-1">
               {detail?.title}
             </h2>
             <p className="text-white font-semibold mb-3">{`Release: ${detail?.release_date}`}</p>
@@ -59,7 +59,19 @@ function DetailMovie() {
                 </div>
               ))}
             </div>
-            <p className="text-white font-semibold mb-5">{detail?.overview}</p>
+            <p className="text-white font-semibold mb-4">{detail?.overview}</p>
+            <p className="text-white font-semibold mb-1">
+              Production Contries:{" "}
+            </p>
+            <div className="flex justify-start items-center gap-3 mb-5">
+              {detail?.production_countries?.map((proCoun) => (
+                <div key={proCoun?.id}>
+                  <p className="rounded-lg italic font-semibold text-white py-0.2 px-3 bg-red-600">
+                    {proCoun?.name}
+                  </p>
+                </div>
+              ))}
+            </div>
             <Link
               to={`/trailer/${detail?.id}`}
               className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"

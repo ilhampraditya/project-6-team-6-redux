@@ -122,7 +122,6 @@ export const login = (email, password, navigate) => async (dispatch) => {
     // Save our token
     dispatch(setToken(token));
 
-
     // Redirect to home
     navigate("/");
   } catch (error) {
@@ -133,4 +132,3 @@ export const login = (email, password, navigate) => async (dispatch) => {
     alert(error?.message);
   }
 };
-

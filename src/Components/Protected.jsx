@@ -8,7 +8,7 @@ function Protected({ children }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMe(navigate, null, "/login"));
+    dispatch(getMe(navigate, null, "/id"));
   }, [dispatch, navigate]);
   return children;
 }
