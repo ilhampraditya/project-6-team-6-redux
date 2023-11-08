@@ -15,7 +15,7 @@ function Id() {
               href="/login"
               className="px-3 py-1 md:px-6 md:py-2 bg-red-600 border-2 border-red-600 hover:bg-red-700 text-white rounded-full font-bold  transition-all duration-300"
             >
-              Login Now!
+              Login!
             </a>
           </div>
         </div>
